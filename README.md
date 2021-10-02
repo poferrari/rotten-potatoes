@@ -158,3 +158,31 @@ Obter detalhes do container
 
 Obter detalhes de todo os objetos
 * kubectl get all
+
+# Exemplo
+
+Construir a imagem
+* docker build -t poferrari/rotten-potatoes:v1 .
+
+Login no dockerhub
+* docker login
+
+Subir para o repositório
+* docker push poferrari/rotten-potatoes:v1
+
+Criou a tag v1, precisa subir a tag latest também - Boa prática
+* docker tag poferrari/rotten-potatoes:v1 poferrari/rotten-potatoes:latest
+
+Subir para o repositório
+* docker push poferrari/rotten-potatoes:latest
+- imagem criada e disponível no docker registry
+
+Aplicar deployment do Mongo
+* kubectl apply -f deployment.yaml
+* kubectl port-forward svc/mongodb 27017:27017
+* watch 'kubectl get all'
+
+Criar 20 replicas
+* kubectl scale deployment web --replicas 20
+
+
